@@ -45,7 +45,8 @@ void gioco( char matrice[M][M]){ // Funzione che è alla base del mio gioco( pos
     if(cnt >=5){
         checkWin(matrice);
     }
-    // Il primo giocatore avra sempre le X mentre il second i O :)
+
+
     if(cnt%2 == 0){
         p = 'O';
     }
@@ -83,16 +84,8 @@ int checkWin(char matrice[M][M]){ // Funziona che visone le eventuali condizioni
     int i=0, j=0;
     static int check = 0;
 
-
-        if(matrice[i][j] == 'X'  && matrice[i][j+2] == 'X' && matrice[i][j+4] == 'X'  || matrice[i+4][j] == 'X'  && matrice[i+4][j+2] == 'X' && matrice[i+4][j+4] == 'X' ){
-            return check = 1; 
-        }
-        else if(matrice[i][j] == 'O'  && matrice[i][j+2] == 'O' && matrice[i][j+4] == 'O'  || matrice[i+4][j] == 'O'  && matrice[i+4][j+2] == 'O' && matrice[i+4][j+4] == 'O'){
-            return check = 2;
-        }
-        else{
-            return check = 3;
-        }
+    
+    
 } 
 int main() {
 
