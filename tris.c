@@ -36,12 +36,12 @@ void stampa(char matrice[M][M]) { // Funzione che ogni volta stampera la mia mat
 void gioco( char matrice[M][M]){ // Funzione che è alla base del mio gioco( posizionamento dei simboli, e richiamo alla funzione che ogni volta stampa la matrice) 
 
     static char p;
-    static int cnt;
+    static int cnt = 0;
     static int r =0,c =0;
     int i=0, j=0;
     // Dopo 5 mosse ci potrebbe essere un vincitore :)
     // Dunque andiamo a controllare se c'e :O......;
-
+    
     if(cnt >=5){
         checkWin(matrice);
     }
@@ -52,26 +52,26 @@ void gioco( char matrice[M][M]){ // Funzione che è alla base del mio gioco( pos
     else{
         p = 'X';
     }
+    printf("Giocatore dove vuoi inserire la pedina ?\n");
 
-    printf("Giocatore dove vuoi inserire la pedina, dimmi prima righe e poi colonne....");
-    printf("Righe: "); 
-    scanf("%d\n", &r);
-    printf("Colonne: ");
-    scanf("%d\n", &c);
+    do {
+        printf(" Dimmi le Righe (0,2,4): ");
+        scanf("%d", &r);  
+        printf(" Dimmi le Colonne(0,2,4): ");
+        scanf("%d", &c);  
+        printf("\n");
+    } while(c % 2 != 0 || r % 2 != 0); 
+
+    printf("Hai scelto la riga %d e la colonna %d\n", r, c);;
     
-            if(matrice[r][c] == ' '){
+    for(i=0;i<M;i++){
+        for(j=0;j<M;j++){
+            if(i == r && j == c && matrice[i][j]  == ' '){
                 matrice[i][j] = p;
                 cnt ++;
             }
-            if(matrice[r][c] == p){
-                printf("Hai gia inserito qualcosa qui, devi rifare :(");
-                gioco(matrice);
-            }
-            else{
-                printf("Il tuo avversario ha gia inserito qualcosa, ritenta :(");
-                gioco(matrice);
-                
-            }
+        }
+    }
 
     stampa(matrice);
     gioco(matrice);
@@ -80,8 +80,19 @@ void gioco( char matrice[M][M]){ // Funzione che è alla base del mio gioco( pos
  
 int checkWin(char matrice[M][M]){ // Funziona che visone le eventuali condizioni di vittoria   
 
+    int i=0, j=0;
+    static int check = 0;
 
 
+        if(matrice[i][j] == 'X'  && matrice[i][j+2] == 'X' && matrice[i][j+4] == 'X'  || matrice[i+4][j] == 'X'  && matrice[i+4][j+2] == 'X' && matrice[i+4][j+4] == 'X' ){
+            return check = 1; 
+        }
+        else if(matrice[i][j] == 'O'  && matrice[i][j+2] == 'O' && matrice[i][j+4] == 'O'  || matrice[i+4][j] == 'O'  && matrice[i+4][j+2] == 'O' && matrice[i+4][j+4] == 'O'){
+            return check = 2;
+        }
+        else{
+            return check = 3;
+        }
 } 
 int main() {
 
@@ -89,13 +100,18 @@ int main() {
 
     crea(matrice);
     stampa(matrice);
+    printf("Il primo a giocare avra le X mente il secondo i , capito?");
+    gioco(matrice);
     int check;
-    //check = checkWin();
+    check = checkWin(matrice);
 
     if(check == 1){
         printf("Giocatore 1 hai vinto");
     }
-    else{
+    else if (check == 3){
         printf("Giocatore 2 hai vinto");
+    }
+    else{
+        printf("Nessuno ha vinto :)");
     }
 }
