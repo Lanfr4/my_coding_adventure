@@ -42,9 +42,8 @@ void gioco( char matrice[M][M]){ // Funzione che è alla base del mio gioco( pos
     // Dopo 5 mosse ci potrebbe essere un vincitore :)
     // Dunque andiamo a controllare se c'e :O......;
     
-    if(cnt >=5){
-        checkWin(matrice);
-    }
+    /*if(cnt >=5){
+        checkWin(matrice);}*/
 
 
     if(cnt%2 == 0){
@@ -80,9 +79,13 @@ void gioco( char matrice[M][M]){ // Funzione che è alla base del mio gioco( pos
 }
  
 int checkWin(char matrice[M][M]){ // Funziona che visone le eventuali condizioni di vittoria   
+/*
+    int i=0;
+    int j=0;
+    static int check = 0;*/
 
-    int i=0, j=0;
-    static int check = 0;
+    
+
 
     
     
@@ -101,10 +104,11 @@ int main() {
     if(check == 1){
         printf("Giocatore 1 hai vinto");
     }
-    else if (check == 3){
+    else if (check == 2){
         printf("Giocatore 2 hai vinto");
     }
     else{
         printf("Nessuno ha vinto :)");
     }
+
 }
