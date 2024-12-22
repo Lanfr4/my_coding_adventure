@@ -52,6 +52,7 @@ void gioco( char matrice[M][M]){ // Funzione che è alla base del mio gioco( pos
     else{
         p = 'X';
     }
+
     printf("Giocatore dove vuoi inserire la pedina ?\n");
 
     do {
@@ -62,7 +63,7 @@ void gioco( char matrice[M][M]){ // Funzione che è alla base del mio gioco( pos
         printf("\n");
     } while(c % 2 != 0 || r % 2 != 0); 
 
-    printf("Hai scelto la riga %d e la colonna %d\n", r, c);;
+    printf("Hai scelto la riga %d e la colonna %d\n", r, c);
     
     for(i=0;i<M;i++){
         for(j=0;j<M;j++){
@@ -78,7 +79,7 @@ void gioco( char matrice[M][M]){ // Funzione che è alla base del mio gioco( pos
 
 }
  
-int checkWin(char matrice[M][M]) { 
+void checkWin(char matrice[M][M]){ 
 
     int x1=0, o1=0, control =0;
 
@@ -88,27 +89,24 @@ int checkWin(char matrice[M][M]) {
                 if(matrice[i][j] == 'X'){
                     x1++;
                 }
-                else{
+                else if(matrice[i][j] == 'O'){
                     o1++;
                 }
             }
         }
     }
-
+    system("cls"); 
     if(x1> o1){
-        printf("Giocatore 1 hai vinto!!!");
+        printf("Giocatore 1 hai vinto!!!\n");
     }
     else if(o1 > x1){
-        printf("Giocatroe 2 hai vinto !!!!");
+        printf("Giocatroe 2 hai vinto !!!!\n");
     }
     else{
-        printf("Nessuno dei due giocatori ha vinto");
+        printf("Nessuno dei due giocatori ha vinto\n");
     }
-    /*
-    while(control != 1){
-        printf("Inserisci 1 per chiudere il gioco : ");
-        scanf("%d", &control);
-    }*/
+
+    //exit(0);
     
 }
 int main() {
