@@ -79,35 +79,56 @@ void gioco( char matrice[M][M]){ // Funzione che è alla base del mio gioco( pos
 
 }
  
-void checkWin(char matrice[M][M]){ 
+void checkWin(char matrice[M][M]) {
 
-    int x1=0, o1=0, control =0;
-
-    while(x1!=3 && o1!=3){
-        for(int i=0; i<M; i++){
-            for(int j=0; j<M; j++){
-                if(matrice[i][j] == 'X'){
-                    x1++;
-                }
-                else if(matrice[i][j] == 'O'){
-                    o1++;
-                }
+    //ORRIZZONATLI
+    for (int i = 0; i < M; i++) {
+        if (matrice[i][0] == matrice[i][2] && matrice[i][2] == matrice[i][4]) {
+            if (matrice[i][0] == 'X') {
+                printf("Giocatore 2 ha vinto!!!\n");
+                exit(0);  
+            } 
+            else if (matrice[i][0] == 'O') {
+                printf("Giocatore 1 ha vinto!!!!\n"); 
+                exit(0); 
             }
         }
     }
-    system("cls"); 
-    if(x1> o1){
-        printf("Giocatore 1 hai vinto!!!\n");
-    }
-    else if(o1 > x1){
-        printf("Giocatroe 2 hai vinto !!!!\n");
-    }
-    else{
-        printf("Nessuno dei due giocatori ha vinto\n");
+    //VERTICALI
+    for (int i = 0; i < M; i++) {
+        if (matrice[0][i] == matrice[2][i] && matrice[2][i] == matrice[4][i]) {
+            if (matrice[0][i] == 'X') {
+                printf("Giocatore 2 ha vinto!!!\n");
+                exit(0);  
+            } else if (matrice[0][i] == 'O') {
+                printf("Giocatore 1 ha vinto!!!!\n");
+                exit(0); 
+            }
+        }
     }
 
-    //exit(0);
-    
+    // DIAGONALE \    *
+    if (matrice[0][0] == matrice[2][2] && matrice[2][2] == matrice[4][4]) {
+        if (matrice[0][0] == 'X') {
+            printf("Giocatore 2 ha vinto!!!\n");
+            exit(0);   
+        } else if (matrice[0][0] == 'O') {
+            printf("Giocatore 1 ha vinto!!!!\n");
+            exit(0);   
+        }
+    }
+    //DIAGONALE /
+    if (matrice[0][4] == matrice[2][2] && matrice[2][2] == matrice[4][0]) {
+        if (matrice[0][4] == 'X') {
+            printf("Giocatore 2 ha vinto!!!\n");
+            exit(0);
+        } else if (matrice[0][4] == 'O') {
+            printf("Giocatore 1 ha vinto!!!!\n");
+            exit(0); 
+        }
+    }
+
+    printf("Nessuno dei due giocatori ha vinto\n");
 }
 int main() {
 
@@ -115,7 +136,7 @@ int main() {
 
     crea(matrice);
     stampa(matrice);
-    //printf("Il primo a giocare avra le X mente il secondo i O , capito?\n\n\");
+    //printf("Il primo a giocare avra gli O mente il secondo le X , capito?\n\n\");
     gioco(matrice);
 
 }
