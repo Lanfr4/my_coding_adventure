@@ -42,9 +42,9 @@ void gioco( char matrice[M][M]){ // Funzione che è alla base del mio gioco( pos
     // Dopo 5 mosse ci potrebbe essere un vincitore :)
     // Dunque andiamo a controllare se c'e :O......;
     
-    /*if(cnt >=5){
-        checkWin(matrice);}*/
-
+    if(cnt >=5 ){
+        checkWin(matrice);
+    }
 
     if(cnt%2 == 0){
         p = 'O';
@@ -78,37 +78,46 @@ void gioco( char matrice[M][M]){ // Funzione che è alla base del mio gioco( pos
 
 }
  
-int checkWin(char matrice[M][M]){ // Funziona che visone le eventuali condizioni di vittoria   
-/*
-    int i=0;
-    int j=0;
-    static int check = 0;*/
+int checkWin(char matrice[M][M]) { 
 
-    
+    int x1=0, o1=0, control =0;
 
+    while(x1!=3 && o1!=3){
+        for(int i=0; i<M; i++){
+            for(int j=0; j<M; j++){
+                if(matrice[i][j] == 'X'){
+                    x1++;
+                }
+                else{
+                    o1++;
+                }
+            }
+        }
+    }
 
+    if(x1> o1){
+        printf("Giocatore 1 hai vinto!!!");
+    }
+    else if(o1 > x1){
+        printf("Giocatroe 2 hai vinto !!!!");
+    }
+    else{
+        printf("Nessuno dei due giocatori ha vinto");
+    }
+    /*
+    while(control != 1){
+        printf("Inserisci 1 per chiudere il gioco : ");
+        scanf("%d", &control);
+    }*/
     
-    
-} 
+}
 int main() {
 
     char matrice[M][M];
 
     crea(matrice);
     stampa(matrice);
-    printf("Il primo a giocare avra le X mente il secondo i , capito?");
+    //printf("Il primo a giocare avra le X mente il secondo i O , capito?\n\n\");
     gioco(matrice);
-    int check;
-    check = checkWin(matrice);
-
-    if(check == 1){
-        printf("Giocatore 1 hai vinto");
-    }
-    else if (check == 2){
-        printf("Giocatore 2 hai vinto");
-    }
-    else{
-        printf("Nessuno ha vinto :)");
-    }
 
 }
