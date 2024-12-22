@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<stdlib.h>
+/*
+void gioco();
+void stampa();
+void crea();
+
+
+*/
+int main(){
+
+    crea();
+    gioco();
+    stampa();
+
+    //MATRICE D' OBBLIGO ;)
+}
