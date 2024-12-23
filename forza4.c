@@ -10,11 +10,11 @@ void gioco( char matrice[N][M]){
 
     static int cnt =0;
     static char p;
-    int c, r;
-
+    int c, r, i=0;
+/*
     if(cnt>= 10){
         checkWin(matrice);
-    }
+    }*/
 
     if(cnt%2 == 0){
         p = 'O';
@@ -25,24 +25,15 @@ void gioco( char matrice[N][M]){
 
     printf("Giocatore dove vuoi inserire la pedina ?\n");
 
-    do {
-        printf(" Dimmi le Righe (0,1,2,3,4,5,6): ");
-        scanf("%d", &r);  
-        printf(" Dimmi le Colonne(0,2,4): ");
+    do { 
+        printf(" Dimmi la Colonne dove vuoi inserire la caselle(1,3,5,7,9,11,13): ");
         scanf("%d", &c);  
         printf("\n");
-    } while(c % 2 != 0 || r % 2 != 0); 
+    } while(c % 2 != 0 ); 
 
-    printf("Hai scelto la riga %d e la colonna %d\n", r, c);
+    printf("Hai scelto la r colonna %d\n",  c);
     
-    for(int i=0;i<M;i++){
-        for(int j=0;j<M;j++){
-            if(i == r && j == c && matrice[i][j]  == ' '){
-                matrice[i][j] = p;
-                cnt ++;
-            }
-        }
-    }
+    
 
     stampa(matrice);
     gioco(matrice);
@@ -52,7 +43,7 @@ void crea(char matrice[N][M]) {
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
             if (i == N - 1) {
-                if(( j == 0) || (j == M-1)){
+                if(j %2 == 0){
                     matrice[i][j] = '|';
                 }
                 else{
@@ -71,9 +62,9 @@ void crea(char matrice[N][M]) {
     }
 }
 
-void stampa(char matrice[M][M]) { // Funzione che ogni volta stampera la mia matrice aggiornandola con le X o i Oe
+void stampa(char matrice[M][M]) { 
 
-    //system("cls"); 
+    system("cls"); 
     printf("         FORZA 4\n");
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
@@ -85,8 +76,8 @@ void stampa(char matrice[M][M]) { // Funzione che ogni volta stampera la mia mat
 int main(){
 
     char matrice[N][M];
+
     crea(matrice);
-    matrice[0][1] = 'c';
     stampa(matrice);
     //gioco(matrice);
 
