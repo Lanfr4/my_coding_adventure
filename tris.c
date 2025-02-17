@@ -107,7 +107,7 @@ void checkWin(char matrice[M][M]) {
         }
     }
 
-    // DIAGONALE \    *
+    // DIAGONALE
     if (matrice[0][0] == matrice[2][2] && matrice[2][2] == matrice[4][4]) {
         if (matrice[0][0] == 'X') {
             printf("Giocatore 2 ha vinto!!!\n");
@@ -117,7 +117,7 @@ void checkWin(char matrice[M][M]) {
             exit(0);   
         }
     }
-    //DIAGONALE /
+    //DIAGONALE
     if (matrice[0][4] == matrice[2][2] && matrice[2][2] == matrice[4][0]) {
         if (matrice[0][4] == 'X') {
             printf("Giocatore 2 ha vinto!!!\n");
