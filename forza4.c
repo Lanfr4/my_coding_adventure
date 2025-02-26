@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include <time.h>
 #define N 6
-#define M 13
+#define M 21
 
 //void checkWin();
 
@@ -26,17 +26,15 @@ void gioco( char matrice[N][M]){
     printf("Giocatore dove vuoi inserire la pedina ?\n");
 
     do { 
-        printf(" Dimmi la Colonne dove vuoi inserire la caselle(1,3,5,7,9,11,13): ");
+        printf(" Dimmi la Colonne dove vuoi inserire il gettone(1,3,5,7,9,11): ");
         scanf("%d", &c);  
-        printf("\n");
-    } while(c % 2 != 0 ); 
-
-    printf("Hai scelto la r colonna %d\n",  c);
+    }  while (c % 2 == 0 || c > 11 || c < 1);
+  
     
     
 
-    stampa(matrice);
-    gioco(matrice);
+    //stampa(matrice);
+    //gioco(matrice);
 }
 void crea(char matrice[N][M]) {
 
@@ -68,7 +66,7 @@ void stampa(char matrice[M][M]) {
     printf("         FORZA 4\n");
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
-            printf("%c ", matrice[i][j]);
+            printf("%c", matrice[i][j]);
         }
         printf("\n");
     }
@@ -79,6 +77,6 @@ int main(){
 
     crea(matrice);
     stampa(matrice);
-    //gioco(matrice);
+    gioco(matrice);
 
 }
