@@ -80,7 +80,6 @@ void gioco( char matrice[M][M]){ // Funzione che è alla base del mio gioco( pos
 }
  
 void checkWin(char matrice[M][M]) {
-
     //ORRIZZONATLI
     for (int i = 0; i < M; i++) {
         if (matrice[i][0] == matrice[i][2] && matrice[i][2] == matrice[i][4]) {
@@ -106,7 +105,6 @@ void checkWin(char matrice[M][M]) {
             }
         }
     }
-
     // DIAGONALE
     if (matrice[0][0] == matrice[2][2] && matrice[2][2] == matrice[4][4]) {
         if (matrice[0][0] == 'X') {
@@ -127,7 +125,6 @@ void checkWin(char matrice[M][M]) {
             exit(0); 
         }
     }
-
     printf("Nessuno dei due giocatori ha vinto\n");
 }
 int main() {
