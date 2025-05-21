@@ -11,60 +11,11 @@ void checkWin(char matrice[N][M]) {
    char winner = ' '; // Per determinare il vincitore
 
     // ORIZZONTALE
-    for(int i = 0; i < N; i++){
-        for(int j = 0; j <= M - 4; j++){
-            if(matrice[i][j] != ' ' && 
-                matrice[i][j] == matrice[i][j+1] && 
-                matrice[i][j] == matrice[i][j+2] &&
-                matrice[i][j] == matrice[i][j+3]){
-                winner = matrice[i][j];
-            }
-        }
-    }
-
     // VERTICALE
-    for(int j = 0; j < M; j++){
-        for(int i = 0; i <= N - 4; i++){
-            if(matrice[i][j] != ' ' && 
-                matrice[i][j] == matrice[i+1][j] && 
-                matrice[i][j] == matrice[i+2][j] &&
-                matrice[i][j] == matrice[i+3][j]){
-                winner = matrice[i][j];
-            }
-        }
-    }
-
     // DIAGONALE NORMALE (↘)
-    for(int i = 0; i <= N - 4; i++){
-        for(int j = 0; j <= M - 4; j++){
-            if(matrice[i][j] != ' ' && 
-                matrice[i][j] == matrice[i+1][j+1] && 
-                matrice[i][j] == matrice[i+2][j+2] &&
-                matrice[i][j] == matrice[i+3][j+3]){
-                winner = matrice[i][j];
-            }
-        }
-    }
-
     // DIAGONALE AL CONTRARIO (↙)
-    for(int i = 3; i < N; i++){ // Partenza da riga 3 per evitare underflow
-        for(int j = 0; j <= M - 4; j++){
-            if(matrice[i][j] != ' ' && 
-                matrice[i][j] == matrice[i-1][j+1] && 
-                matrice[i][j] == matrice[i-2][j+2] &&
-                matrice[i][j] == matrice[i-3][j+3]){
-                winner = matrice[i][j];
-            }
-        }
-    }
-
-    printf("Controllo vittoria... winner: %c\n", winner);
-    // Verifica del vincitore
-    if(winner == ' '){ 
-        printf("Giocatore %c hai vinto!!!\n", winner);
-    } else {
-        printf("Nessun vincitore.\n");
-    }
+    
+    
 
 }
 
