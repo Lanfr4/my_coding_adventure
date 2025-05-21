@@ -14,7 +14,7 @@ void checkWin(char matrice[N][M]) {
 
     // ORRIZZONTALE
     for(int i=0; i<N ;  i++){
-        for( int j=0; j <M-4 ; j++){
+        for( int j=0; j <=M-4 ; j++){
             if(matrice[i][j] != ' ' && 
                 matrice[i][j] == matrice[i][j+1] && 
                 matrice[i][j] == matrice[i][j+2] &&
@@ -38,7 +38,7 @@ void checkWin(char matrice[N][M]) {
     }
 
     // DIAGONALE NORMALE
-    for(int i=0; i<N;  i++){
+    for(int i=0; i<N-4;  i++){
         for( int j=0; j <M-4 ; j++){
             if(matrice[i][j] != ' ' && 
                 matrice[i][j] == matrice[i+1][j+1] && 
@@ -50,12 +50,12 @@ void checkWin(char matrice[N][M]) {
         }
     }
     // DIAGONALE AL CONTRARIO 
-    for(int i= N; i< 4 ;  i--){
-        for( int j=M; j > 4 ; j--){
+    for(int i = N-1; i >= 4; i--){
+        for( int j=M-1; j >=4 ; j--){
             if(matrice[i][j] != ' ' && 
-                matrice[i][j] == matrice[i-1][j-1] && 
-                matrice[i][j] == matrice[i-2][j-2] &&
-                matrice[i][j] == matrice[i-3][j-3] ){
+                matrice[i][j] == matrice[i+1][j-1] && 
+                matrice[i][j] == matrice[i+2][j-2] &&
+                matrice[i][j] == matrice[i+3][j-3] ){
                 winner = matrice[i][j];
             }
 
@@ -65,7 +65,7 @@ void checkWin(char matrice[N][M]) {
    if(winner == 'X'){
     printf("Giocatore 1 hai vinto!!!");
    }
-   else{
+   else if (winner == 'O'){
     printf("Giocatore 2 hai vinto!!!");
    }
 
