@@ -41,16 +41,33 @@ void checkWin(char matrice[N][M]) {
     for(int i=0; i<N;  i++){
         for( int j=0; j <M-4 ; j++){
             if(matrice[i][j] != ' ' && 
-                matrice[i][j] == matrice[i][j+1] && 
-                matrice[i][j] == matrice[i][j+2] &&
-                matrice[i][j] == matrice[i][j+3] ){
+                matrice[i][j] == matrice[i+1][j+1] && 
+                matrice[i][j] == matrice[i+2][j+2] &&
+                matrice[i][j] == matrice[i+3][j+3] ){
                 winner = matrice[i][j];
             }
 
         }
     }
     // DIAGONALE AL CONTRARIO 
+    for(int i= N; i< 4 ;  i--){
+        for( int j=M; j > 4 ; j--){
+            if(matrice[i][j] != ' ' && 
+                matrice[i][j] == matrice[i-1][j-1] && 
+                matrice[i][j] == matrice[i-2][j-2] &&
+                matrice[i][j] == matrice[i-3][j-3] ){
+                winner = matrice[i][j];
+            }
 
+        }
+    }
+
+   if(winner == 'X'){
+    printf("Giocatore 1 hai vinto!!!");
+   }
+   else{
+    printf("Giocatore 2 hai vinto!!!");
+   }
 
 }
 
