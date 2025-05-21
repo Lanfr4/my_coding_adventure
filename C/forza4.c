@@ -1,16 +1,56 @@
 #include <stdio.h>
 #include<stdlib.h>
 #include <time.h>
-#define WIN 4 
-// Essendo che nel forza 4 per vincere bisogna far si che 4 Gettoni siano messi uno affianco all' altro
+
 #define N 6
 #define M 21
 
-void checkWin(char matrice[N][M]){
 
-    //VERTICALI 
-    //ORRIZONATALI
-    //OBLIQUE
+void checkWin(char matrice[N][M]) {
+    
+    char winner =' ';
+    // la variabile serve per vedere se effettivamente 
+    //c'e un vincitore che verra verificato in un if-else alla fine di tutto
+
+    // ORRIZZONTALE
+    for(int i=0; i<N ;  i++){
+        for( int j=0; j <M-4 ; j++){
+            if(matrice[i][j] != ' ' && 
+                matrice[i][j] == matrice[i][j+1] && 
+                matrice[i][j] == matrice[i][j+2] &&
+                matrice[i][j] == matrice[i][j+3] ){
+                winner = matrice[i][j];
+            }
+
+        }
+    }
+
+    // VERTICALE
+    for(int j=0; j<M;j++){
+        for(int i=0;i< N-4;i++){
+            if(matrice[i][j] != ' ' && 
+                matrice[i][j] == matrice[i+1][j] && 
+                matrice[i][j] == matrice[i+2][j] &&
+                matrice[i][j] == matrice[i+3][j] ){
+                winner = matrice[i][j];
+            }
+        }
+    }
+
+    // DIAGONALE NORMALE
+    for(int i=0; i<N;  i++){
+        for( int j=0; j <M-4 ; j++){
+            if(matrice[i][j] != ' ' && 
+                matrice[i][j] == matrice[i][j+1] && 
+                matrice[i][j] == matrice[i][j+2] &&
+                matrice[i][j] == matrice[i][j+3] ){
+                winner = matrice[i][j];
+            }
+
+        }
+    }
+    // DIAGONALE AL CONTRARIO 
+
 
 }
 
@@ -20,9 +60,9 @@ void gioco( char matrice[N][M]){
     static char p;
     int c, r, i=0;
 
-    /*if(cnt>= 10){
+    if(cnt>= 10){
         checkWin(matrice);
-    }*/
+    }
 
     if(cnt%2 == 0){
         p = 'O';
@@ -38,7 +78,7 @@ void gioco( char matrice[N][M]){
         scanf("%d", &c);  
     }  while (c % 2 == 0 || c > 20|| c < 0);
 
-    for (int i = N; i > 0; i--) {
+    for(int i = N; i > 0; i--) {
         if (matrice[i][c] == ' ') {  
                 matrice[i][c] = p;       
                 break;                   
