@@ -1,7 +1,7 @@
 
-//#include <stdio.h>
-//#include<stdlib.h>
-//#include <time.h>
+#include <stdio.h>
+#include<stdlib.h>
+#include <time.h>
 
 #define N 6
 #define M 21
@@ -11,8 +11,8 @@ void checkWin(char matrice[N][M]) {
     
    char winner = ' '; // Per determinare il vincitore
 
-    // ORIZZONTALE
-    // VERTICALE
+    // ORIZZONTALE (->)
+    // VERTICALE 
     // DIAGONALE NORMALE (↘)
     // DIAGONALE AL CONTRARIO (↙)
     
