@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include<stdlib.h>
 #include <time.h>
@@ -11,9 +12,6 @@ void checkWin(char matrice[N][M]) {
    char winner = ' '; // Per determinare il vincitore
 
     // ORIZZONTALE
-
-    
-    
     // VERTICALE
     // DIAGONALE NORMALE (↘)
     // DIAGONALE AL CONTRARIO (↙)
