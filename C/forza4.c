@@ -9,14 +9,52 @@
 
 void checkWin(char matrice[N][M]) {
     
-   char winner = ' '; // Per determinare il vincitore
+    char winner = ' ';
 
     // ORIZZONTALE
-    // VERTICALE
-    // DIAGONALE NORMALE (↘)
-    // DIAGONALE AL CONTRARIO (↙)
-    
+    for (int i = N - 1; i >= 0; i--) {
+        for (int j = 0; j < M - 6; j++) {
+            if (matrice[i][j] != ' ' && matrice[i][j] == matrice[i][j + 2] &&
+                matrice[i][j] == matrice[i][j + 4] && matrice[i][j] == matrice[i][j + 6]) {
+                winner = matrice[i][j];
+            }
+        }
+    }
 
+    // VERTICALE
+    for (int i = N - 1; i >= 6; i--) {
+        for (int j = 0; j < M; j++) {
+            if (matrice[i][j] != ' ' && matrice[i][j] == matrice[i - 2][j] &&
+                matrice[i][j] == matrice[i - 4][j] && matrice[i][j] == matrice[i - 6][j]) {
+                winner = matrice[i][j];
+            }
+        }
+    }
+
+    // DIAGONALE NORMALE (↘)
+    for (int i = N - 1; i >= 6; i--) {
+        for (int j = 0; j < M - 6; j++) {
+            if (matrice[i][j] != ' ' && matrice[i][j] == matrice[i - 2][j + 2] &&
+                matrice[i][j] == matrice[i - 4][j + 4] && matrice[i][j] == matrice[i - 6][j + 6]) {
+                winner = matrice[i][j];
+            }
+        }
+    }
+
+    // DIAGONALE AL CONTRARIO (↙)
+    for (int i = N - 1; i >= 6; i--) {
+        for (int j = 6; j < M; j++) {
+            if (matrice[i][j] != ' ' && matrice[i][j] == matrice[i - 2][j - 2] &&
+                matrice[i][j] == matrice[i - 4][j - 4] && matrice[i][j] == matrice[i - 6][j - 6]) {
+                winner = matrice[i][j];
+            }
+        }
+    }
+
+    if (winner != ' ') {
+        printf("Il vincitore è: %c\n", winner);
+        exit(0); // Termina il gioco se c'è un vincitore
+    }
 }
 
 void gioco( char matrice[N][M]){
@@ -58,29 +96,29 @@ void gioco( char matrice[N][M]){
     stampa(matrice);
     gioco(matrice);
 }
+
 void crea(char matrice[N][M]) {
 
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
             if (i == N - 1) {
-                if(j %2 == 0){
+                if (j % 2 == 0) {
                     matrice[i][j] = '|';
+                } else {
+                    matrice[i][j] = ' ';
                 }
-                else{
-                   matrice[i][j] = '_';  
+            } else {
+                if (j % 2 == 0) {
+                    matrice[i][j] = '|';
+                } else {
+                    matrice[i][j] = ' ';
                 }
-            }
-             
-            else if (j % 2 == 0) {
-                matrice[i][j] = '|';  
-            } 
-
-            else {
-                matrice[i][j] = ' '; 
             }
         }
     }
 }
+
+
 
 void stampa(char matrice[M][M]) { 
 
